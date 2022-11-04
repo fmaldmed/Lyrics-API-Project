@@ -1,2 +1,3 @@
 # Lyrics-API-Project
-my copy
+I enjoy Tacos
+I enjoy sushi
