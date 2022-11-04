@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(108, 154, 214);
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+.banner-image {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+    background-size: auto;
+    background-position: center;
+}
+
+#vinyl {
+    color: rgb(15, 71, 71);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: left;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+    color: antiquewhite;
+}
+
+.Lyrics {
+    color: aqua;
+}
+
+button,
+input,
+select,
+textarea {
+    display: inline-block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 100%;
+    line-height: 1.2;
+    margin: 0;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+button,
+select {
+    text-transform: none;
+}
+
+textarea {
+    overflow: auto;
+}
+
+button {
+    background-color: antiquewhite;
+    color: blue;
+    border: blue;
+}
+
+.btn:hover {
+    color: aquamarine; 
+    background-color: blue;
+
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.text-light {
+    color: #d9e9e8 !important;
+}
+
+.btn {
+    margin-top: 5%;
+    border: blue;
+}
+
+.btn.btn-danger {
+
+    background-color: aqua;
+    color: blue;
+}
+
+.btn.btn-danger:hover {
+    background-color: #ee8294;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+.text-light {
+    padding-top: 10%;
+}
+
+@media screen and (min-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
