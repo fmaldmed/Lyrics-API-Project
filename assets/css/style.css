@@ -105,7 +105,9 @@ button {
     justify-content: center;
 }
 
-
+.img-width{
+     width: 80vw;
+}
 
 
 .text-light {

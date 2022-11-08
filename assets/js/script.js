@@ -47,7 +47,7 @@ var getGenius = function () {
         
         
 
-        <img src="${image}"/>
+        <img  class="img-width" src="${image}"/>
           <p>
            <strong>:</strong> ${lyrics}
             <br>
@@ -55,29 +55,52 @@ var getGenius = function () {
             <br>
             <strong>:</strong> ${hitSongs}
           </p>
+       
          
         </div>
         `;
         displayEl.innerHTML = templateCurrent;
-        
+
         var languageButtonsEl = document.querySelector('#language-buttons');
         var repoContainerEl = document.querySelector('#repos-container');
+        // var allBtn = Array.from(languageButtonsEl.children);
+
+        // allBtn.forEach(function(btn){
+        //     btn.addEventListener("click", buttonClickHandler )
+        // })
         var buttonClickHandler = function (event) {
             var language = event.target.getAttribute('data-language');
           
-            if (language) {
-                getGenius(language);
-          
+            if (language==="hitSongs") {
+              document.location = hitSongs ;
               repoContainerEl.textContent = '';
             }
+            if  (language==="lyrics") {
+                document.location = lyrics ;
+                 repoContainerEl.textContent = '';
+              }
+            //   if (language==="hitSongs") {
+            //     document.location = video ;
+            //      repoContainerEl.textContent = '';
+            //   }
+              
+              
+            
           };
-
+         
+          languageButtonsEl.addEventListener('click', buttonClickHandler);
       });
     } else {
       alert("Error:" + response.statusText);
     }
   });
+  
 };
+
+
+
+
+
 
 var searchArtistEl = document.querySelector("#search-input");
 
@@ -103,3 +126,4 @@ var formSubmitHandler = function (event) {
 document
   .querySelector("#search-form")
   .addEventListener("submit", formSubmitHandler);
+  
