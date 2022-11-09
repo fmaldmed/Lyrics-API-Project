@@ -26,7 +26,7 @@
 // };
 // getVideo();
 var displayEl = document.getElementById("display-content");
-var getGenius = function () {
+var getGenius = function (randNum) {
   var searchArtist = document.querySelector("#search-input").value;
   var Url = `https://api.genius.com/search?q=${searchArtist}&access_token=brqqAVknBmcQm4VTlCwJYeg72QX_Lbtk7LvoK2OKmd_3Y8PWLN17gkME0t49sTzy`;
 
@@ -34,9 +34,16 @@ var getGenius = function () {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
-        var lyrics = data.response.hits[0].result.url;
 
-        var image = data.response.hits[0].result.primary_artist.image_url;
+
+
+        var lyrics = data.response.hits[randNum].result.url;
+
+        var image = data.response.hits[randNum].result.song_art_image_url;
+        // var image = data.response.hits[randNum].result.primary_artist.image_url;
+
+        
+        // console.log(image)
 
         var hitSongs = data.response.hits[0].result.primary_artist.url;
 
@@ -65,7 +72,7 @@ var getGenius = function () {
         var repoContainerEl = document.querySelector('#repos-container');
         // var allBtn = Array.from(languageButtonsEl.children);
 
-        // allBtn.forEach(function(btn){
+        //  allBtn.forEach(function(btn){
         //     btn.addEventListener("click", buttonClickHandler )
         // })
         var buttonClickHandler = function (event) {
@@ -84,11 +91,11 @@ var getGenius = function () {
             //      repoContainerEl.textContent = '';
             //   }
               
-              
+            languageButtonsEl.addEventListener('click', buttonClickHandler);
             
           };
          
-          languageButtonsEl.addEventListener('click', buttonClickHandler);
+          
       });
     } else {
       alert("Error:" + response.statusText);
@@ -108,8 +115,8 @@ var formSubmitHandler = function (event) {
   event.preventDefault();
   var artist = searchArtistEl.value.trim();
   console.log(artist, "artist");
-
-  getGenius();
+  var randomNum = Math.floor(Math.random() * 10)
+  getGenius(randomNum);
 };
 
 // var repoContainerEl = document.querySelector('#repos-container');
