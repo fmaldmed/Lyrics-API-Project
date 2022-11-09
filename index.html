@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="./assets/images/music-url.png">
+    
 <!-- fonts link <link rel="stylesheet" href="" />  -->
-    <title>FAT Lyrics</title>
+    <title>FAT MUSIC</title>
     
 </head>
 
@@ -16,18 +18,25 @@
     </figure>
     <main class="main-container">
         <section class="container1">
-            <h1>FAT<span class="Lyrics"> Lyrics</span></h1>
+            <h1>FAT<span class="Lyrics"> Music</span></h1>
             <form id="search-form" class="form w-100">
                 <input id="search-input" class="form w-100" type="text" placeholder="Search Artist">
-                <input id="search-input" class="form w-100" type="text" placeholder="Search Song Title">
-                <select id="format-input" class="form w-100">
-                    <option value="" disabled selected> Select type...</option>
-                    <option id= "artist-name" value="Artist">Artist</option>
-                    <option id= "album" value="Album">Album</option>
-                    <option id= "songname" value="Song">Song</option>
-                </select>
+                <!-- <input id="search-input" class="form w-100" type="text" placeholder="Search Song Title"> -->
+                <div class="card">
+                    <h3 class="card-header text-uppercase">Search By Choice</h3>
+                    <div id="language-buttons" class="card-body">
+                      <button data-language="hitSongs" class="btn">HIT SONGS</button>
+                      <button data-language="lyrics" class="btn">LYRICS</button>
+                      <button data-language="video" class="btn">VIDEO</button>
+                    </div>
+                  </div>
+                   
+              
                 <button class="btn btn-info btn-block">Start Searching</button>
             </form>
+            <div id="display-content"><img id ="image" source= "" ></div>
+            <div id="repos-container" class="list-group"></div>
+            
         </section>
 
 
