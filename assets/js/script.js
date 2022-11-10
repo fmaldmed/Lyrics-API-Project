@@ -25,6 +25,7 @@
 //   });
 // };
 // getVideo();
+// var randomNum=""
 var displayEl = document.getElementById("display-content");
 var getGenius = function (randNum) {
   var searchArtist = document.querySelector("#search-input").value;
@@ -32,20 +33,21 @@ var getGenius = function (randNum) {
 
   fetch(Url).then(function (response) {
     if (response.ok) {
+      //     response.json()
+      // })
+      // .then()
       response.json().then(function (data) {
         console.log(data);
+        console.log(randNum);
 
+        window.lyrics = data.response.hits[randNum].result.url;
 
-
-        var lyrics = data.response.hits[randNum].result.url;
-
-        var image = data.response.hits[randNum].result.song_art_image_url;
+        window.image = data.response.hits[randNum].result.song_art_image_url;
         // var image = data.response.hits[randNum].result.primary_artist.image_url;
 
-        
         // console.log(image)
 
-        var hitSongs = data.response.hits[0].result.primary_artist.url;
+        window.hitSongs = data.response.hits[randNum].result.primary_artist.url;
 
         let templateCurrent = "";
 
@@ -54,83 +56,74 @@ var getGenius = function (randNum) {
         
         
 
-        <img  class="img-width" src="${image}"/>
-          <p>
-           <strong>:</strong> ${lyrics}
-            <br>
-           
-            <br>
-            <strong>:</strong> ${hitSongs}
-          </p>
+        <img  class="img-width" src="${window.image}"/>
+         
        
          
         </div>
         `;
         displayEl.innerHTML = templateCurrent;
 
-        var languageButtonsEl = document.querySelector('#language-buttons');
-        var repoContainerEl = document.querySelector('#repos-container');
-        // var allBtn = Array.from(languageButtonsEl.children);
+        var languageButtonsEl = document.querySelector("#language-buttons");
+        var btn = document.querySelector("bt");
+        var repoContainerEl = document.querySelector("#repos-container");
+        var allBtn = Array.from(languageButtonsEl.children);
 
-        //  allBtn.forEach(function(btn){
-        //     btn.addEventListener("click", buttonClickHandler )
-        // })
-        var buttonClickHandler = function (event) {
-            var language = event.target.getAttribute('data-language');
-          
-            if (language==="hitSongs") {
-              document.location = hitSongs ;
-              repoContainerEl.textContent = '';
-            }
-            if  (language==="lyrics") {
-                document.location = lyrics ;
-                 repoContainerEl.textContent = '';
-              }
-            //   if (language==="hitSongs") {
-            //     document.location = video ;
-            //      repoContainerEl.textContent = '';
-            //   }
-              
-            languageButtonsEl.addEventListener('click', buttonClickHandler);
-            
-          };
-         
-          
+        allBtn.forEach(function (btn) {
+          btn.addEventListener("click", buttonClickHandler);
+        });
+        function buttonClickHandler(event) {
+          var language = event.target.getAttribute("data-language");
+          //  randomNum = Math.floor(Math.random() * 10)
+          if (language === "hitSongs") {
+            console.log("hitsongs");
+            document.location = window.hitSongs;
+            repoContainerEl.textContent = "";
+          }
+          if (language === "lyrics") {
+            console.log("lyrics");
+            document.location = window.lyrics;
+            repoContainerEl.textContent = "";
+          }
+
+          languageButtonsEl.addEventListener("click", buttonClickHandler);
+        }
       });
     } else {
       alert("Error:" + response.statusText);
     }
   });
-  
 };
 
+// i think this is how it supposed to be but not sure
 
+// var formSubmitHandler = function (event,lyrics,hitSongs) {
+//     event.preventDefault();
+//     var artist = searchArtistEl.value.trim();
+//     var randomNum = Math.floor(Math.random() * 10)
+//     if (artist=== lyrics || hitSongs) {
+//       getGenius(randomNum, artist);
+//       searchArtistEl.value = "";
 
-
-
+//   } else {
+//       alert("Please enter an Artist Name");
+//     }
+//   };
 
 var searchArtistEl = document.querySelector("#search-input");
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
   var artist = searchArtistEl.value.trim();
-  console.log(artist, "artist");
-  var randomNum = Math.floor(Math.random() * 10)
-  getGenius(randomNum);
+  //   console.log(artist, "artist");
+  var randomNum = Math.floor(Math.random() * 10);
+  if (artist) {
+    getGenius(randomNum);
+  } else {
+    alert("Please enter an Artist Name");
+  }
 };
-
-// var repoContainerEl = document.querySelector('#repos-container');
-// var buttonClickHandler = function (event) {
-//     var language = event.target.getAttribute('data-language');
-  
-//     if (language) {
-//         getGenius(language);
-  
-//       repoContainerEl.textContent = '';
-//     }
-//   };
 
 document
   .querySelector("#search-form")
   .addEventListener("submit", formSubmitHandler);
-  
