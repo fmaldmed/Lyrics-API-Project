@@ -11,20 +11,38 @@
 // 	}
 // };
 
-// var getVideo = function () {
-//   var videoUrl = ""
-//   fetch(videoUrl).then(function (response) {
-//     if (response.ok) {
-//       response.json().then(function (data) {
-//         console.log(data)
+// Youtube API search
+// documentation
+//https://developers.google.com/youtube/v3/docs/search
+//https://developers.google.com/youtube/v3/docs
+var getvidurl = "https://www.googleapis.com/youtube/v3/search?part=snippet?q="
+var searchinput = document.getElementById("search-input").value;
+var apikey = "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"
 
-//       });
-//     } else {
-//       alert("Error:" + response.statusText);
-//     }
-//   });
-// };
-// getVideo();
+console.log(apikey)
+
+var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
+
+console.log(requesturl)
+
+var getVideo = function () {
+    var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
+    var videoUrl = requesturl
+    var searchinput = document.getElementById("search-input").value;
+    var apikey = "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";
+    fetch(videoUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                console.log(data)
+            });
+        } else {
+            alert("Error:" + response.statusText);
+        };
+    );
+    };
+    getVideo();
+
+
 var displayEl = document.getElementById("display-content");
 var getGenius = function (randNum) {
   var searchArtist = document.querySelector("#search-input").value;
