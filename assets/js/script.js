@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 // https://api.genius.com/songs/378195?access_token=brqqAVknBmcQm4VTlCwJYeg72QX_Lbtk7LvoK2OKmd_3Y8PWLN17gkME0t49sTzy
 
 //client_id: cl6GyWa_P23cmW9_gSv8meKZeJLiWTw9gBH_JxQPp496YTD_AitGjmXLYVCBTq3P
@@ -43,46 +45,47 @@ var getVideo = function () {
     };
     getVideo();
 
+>>>>>>> ced74bdc0113238dbab97d4cfa6229a1461fcbef
 var displayEl = document.getElementById("display-content");
-var getGenius = function (randNum) {
+var getGenius = function (artistInput) {
+  var randNum = Math.floor(Math.random() * 10);
   var searchArtist = document.querySelector("#search-input").value;
   var Url = `https://api.genius.com/search?q=${searchArtist}&access_token=brqqAVknBmcQm4VTlCwJYeg72QX_Lbtk7LvoK2OKmd_3Y8PWLN17gkME0t49sTzy`;
 
   fetch(Url).then(function (response) {
     if (response.ok) {
-      //     response.json()
-      // })
-      // .then()
       response.json().then(function (data) {
+        const hits = data.response.hits.filter((hit) =>
+          hit.result.artist_names
+            .toLowerCase()
+            .includes(artistInput.toLowerCase())
+        );
+
         console.log(data);
-        console.log(randNum);
 
-        window.lyrics = data.response.hits[randNum].result.url;
+        var artistName = hits[randNum].result.artist_names;
 
-        window.image = data.response.hits[randNum].result.song_art_image_url;
-        // var image = data.response.hits[randNum].result.primary_artist.image_url;
+        console.log(artistName, "name");
+        var lyrics = hits[randNum].result.url;
 
-        // console.log(image)
+        var image = hits[randNum].result.song_art_image_url;
 
-        window.hitSongs = data.response.hits[randNum].result.primary_artist.url;
+        var hitSongs = hits[randNum].result.primary_artist.url;
 
         let templateCurrent = "";
 
         templateCurrent += `
         <div class="display-contents">
         
-        
+        <p class="artist-name">  <span>${artistName}</span><p> 
 
-        <img  class="img-width" src="${window.image}"/>
-         
-       
-         
+        <img  class="img-width" src="${image}"/>
         </div>
         `;
         displayEl.innerHTML = templateCurrent;
 
         var languageButtonsEl = document.querySelector("#language-buttons");
-        var btn = document.querySelector("bt");
+
         var repoContainerEl = document.querySelector("#repos-container");
         var allBtn = Array.from(languageButtonsEl.children);
 
@@ -91,15 +94,15 @@ var getGenius = function (randNum) {
         });
         function buttonClickHandler(event) {
           var language = event.target.getAttribute("data-language");
-          //  randomNum = Math.floor(Math.random() * 10)
+
           if (language === "hitSongs") {
-            console.log("hitsongs");
-            document.location = window.hitSongs;
+            console.log("hitSongs");
+            document.location = hitSongs;
             repoContainerEl.textContent = "";
           }
           if (language === "lyrics") {
             console.log("lyrics");
-            document.location = window.lyrics;
+            document.location = lyrics;
             repoContainerEl.textContent = "";
           }
 
@@ -112,32 +115,18 @@ var getGenius = function (randNum) {
   });
 };
 
-// i think this is how it supposed to be but not sure
-
-// var formSubmitHandler = function (event,lyrics,hitSongs) {
-//     event.preventDefault();
-//     var artist = searchArtistEl.value.trim();
-//     var randomNum = Math.floor(Math.random() * 10)
-//     if (artist=== lyrics || hitSongs) {
-//       getGenius(randomNum, artist);
-//       searchArtistEl.value = "";
-
-//   } else {
-//       alert("Please enter an Artist Name");
-//     }
-//   };
-
 var searchArtistEl = document.querySelector("#search-input");
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
   var artist = searchArtistEl.value.trim();
-  //   console.log(artist, "artist");
-  var randomNum = Math.floor(Math.random() * 10);
+
   if (artist) {
-    getGenius(randomNum);
+    getGenius(artist);
+    searchArtistEl.value = "";
   } else {
-    alert("Please enter an Artist Name");
+    document.querySelector("#message-container").textContent =
+      "Enter something please";
   }
 };
 
