@@ -1,3 +1,15 @@
+// YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM
+var displayInfo = document.getElementById("display-info");
+var searchArtist = document.querySelector("#search-input").value;
+var myHeaders = new Headers();
+myHeaders.append("X-Api-Key", "YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM");
+
+var requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+};
+
 var displayEl = document.getElementById("display-content");
 var getGenius = function (artistInput) {
   var randNum = Math.floor(Math.random() * 10);
@@ -29,9 +41,10 @@ var getGenius = function (artistInput) {
         templateCurrent += `
         <div class="display-contents">
         
-        <p class="artist-name">  <span>${artistName}</span><p> 
+        
 
         <img  class="img-width" src="${image}"/>
+        <p class="artist-name">  <span>${artistName}</span><p> 
         </div>
         `;
         displayEl.innerHTML = templateCurrent;
@@ -62,10 +75,38 @@ var getGenius = function (artistInput) {
         }
       });
     } else {
-        document.querySelector("#message-container").textContent =
-      "Enter something please";
-    //   alert("Error:" + response.statusText);
+      document.querySelector("#message-container").textContent =
+        "Error:" + response.statusText;
     }
+    var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
+    fetch(factsUrl, requestOptions).then(function (response) {
+      console.log(factsUrl, "facts");
+
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data[0].birthday, "bday");
+          var birthdays = data[0].birthday;
+          console.log(data[0].net_worth, "$$");
+          var netWorth = data[0].net_worth;
+          console.log(data[0].nationality, "were from");
+          var nationalitys = data[0].nationality;
+          console.log(data, "data");
+
+          let template = "";
+          template += `
+        
+          <p class="artist-birthday">  <span>BIRTHDAY: ${birthdays}</span><p> 
+          <p class="artist-net-worth">  <span>  NET WORTH: ${netWorth}</span><p> 
+          <p class="artist-nationality">  <span> NATIONALITY: ${nationalitys}</span><p> 
+         
+          `;
+          displayInfo.innerHTML = template;
+        });
+      } else {
+        document.querySelector("#message-container").textContent =
+        "Error:" + response.statusText;
+      }
+    });
   });
 };
 
