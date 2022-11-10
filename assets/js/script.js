@@ -1,54 +1,15 @@
-<<<<<<< HEAD
-=======
-// https://api.genius.com/songs/378195?access_token=brqqAVknBmcQm4VTlCwJYeg72QX_Lbtk7LvoK2OKmd_3Y8PWLN17gkME0t49sTzy
+// YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM
+var displayInfo = document.getElementById("display-info");
+var searchArtist = document.querySelector("#search-input").value;
+var myHeaders = new Headers();
+myHeaders.append("X-Api-Key", "YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM");
 
-//client_id: cl6GyWa_P23cmW9_gSv8meKZeJLiWTw9gBH_JxQPp496YTD_AitGjmXLYVCBTq3P
-//client_secret: bQsW80M7UE9yojSWAz6XpTJrq7-i4-fHB72YRLtzn8bbVo4dg8qEr3pKffPoyRF5uk4dJc8qLkNUxa6wc6mvEg
-// client_access_token: qkUOvBENK-6pmKNGA_YQS7HzgA4TobMt6sSexxmSahe_jQRmkAQarRP4YYWNVGKW
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': 'a2ed194c9amsh205ae198b8ca901p15fd30jsn29e238167d2e',
-// 		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
-// 	}
-// };
+var requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+  redirect: "follow",
+};
 
-
-// Youtube API search
-// documentation
-//https://developers.google.com/youtube/v3/docs/search
-//https://developers.google.com/youtube/v3/docs
-var getvidurl = "https://www.googleapis.com/youtube/v3/search?part=snippet?q="
-var searchinput = document.getElementById("search-input").value;
-var apikey = "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"
-
-console.log(apikey)
-
-var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
-
-console.log(requesturl)
-
-var getVideo = function () {
-    
-    var videoUrl = requesturl
-    var searchinput = document.getElementById("search-input").value;
-    var apikey = "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";
-    var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
-    fetch(videoUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                console.log(data)
-            });
-            
-        // } else {
-        //     alert("Error:" + response.statusText);
-        };
-      });
-    };
-
-    getVideo();
-
->>>>>>> ced74bdc0113238dbab97d4cfa6229a1461fcbef
 var displayEl = document.getElementById("display-content");
 var getGenius = function (artistInput) {
   var randNum = Math.floor(Math.random() * 10);
@@ -80,9 +41,10 @@ var getGenius = function (artistInput) {
         templateCurrent += `
         <div class="display-contents">
         
-        <p class="artist-name">  <span>${artistName}</span><p> 
+        
 
         <img  class="img-width" src="${image}"/>
+        <p class="artist-name">  <span>${artistName}</span><p> 
         </div>
         `;
         displayEl.innerHTML = templateCurrent;
@@ -113,8 +75,38 @@ var getGenius = function (artistInput) {
         }
       });
     } else {
-      alert("Error:" + response.statusText);
+      document.querySelector("#message-container").textContent =
+        "Error:" + response.statusText;
     }
+    var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
+    fetch(factsUrl, requestOptions).then(function (response) {
+      console.log(factsUrl, "facts");
+
+      if (response.ok) {
+        response.json().then(function (data) {
+          console.log(data[0].birthday, "bday");
+          var birthdays = data[0].birthday;
+          console.log(data[0].net_worth, "$$");
+          var netWorth = data[0].net_worth;
+          console.log(data[0].nationality, "were from");
+          var nationalitys = data[0].nationality;
+          console.log(data, "data");
+
+          let template = "";
+          template += `
+        
+          <p class="artist-birthday">  <span>BIRTHDAY: ${birthdays}</span><p> 
+          <p class="artist-net-worth">  <span>  NET WORTH: ${netWorth}</span><p> 
+          <p class="artist-nationality">  <span> NATIONALITY: ${nationalitys}</span><p> 
+         
+          `;
+          displayInfo.innerHTML = template;
+        });
+      } else {
+        document.querySelector("#message-container").textContent =
+        "Error:" + response.statusText;
+      }
+    });
   });
 };
 
