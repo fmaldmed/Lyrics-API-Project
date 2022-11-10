@@ -29,20 +29,23 @@ var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
 console.log(requesturl)
 
 var getVideo = function () {
-    var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
+    
     var videoUrl = requesturl
     var searchinput = document.getElementById("search-input").value;
     var apikey = "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";
+    var requesturl = (getvidurl + searchinput + ("?access_token=" + apikey));
     fetch(videoUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
                 console.log(data)
             });
-        } else {
-            alert("Error:" + response.statusText);
+            
+        // } else {
+        //     alert("Error:" + response.statusText);
         };
-    );
+      });
     };
+
     getVideo();
 
 >>>>>>> ced74bdc0113238dbab97d4cfa6229a1461fcbef

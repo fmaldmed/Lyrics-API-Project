@@ -56,9 +56,17 @@ input {
     overflow: visible;
 }
 
+input {
+    background-color: antiquewhite;
+}
+
 button,
 select {
     text-transform: none;
+}
+
+input {
+    background-color: antiquewhite;
 }
 
 textarea {
@@ -127,3 +135,4 @@ button {
         max-width: 25%;
     }
 }
+
