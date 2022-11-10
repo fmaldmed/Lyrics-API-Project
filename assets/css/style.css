@@ -113,6 +113,13 @@ button {
 .text-light {
     padding-top: 10%;
 }
+.artist-name{
+    color:blue;
+    font-size: large;
+    font-weight: 400;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 
 @media screen and (min-width: 768px) {
     .col-md-3 {
