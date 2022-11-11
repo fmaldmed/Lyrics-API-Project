@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-@import url("https://fonts.googleapis.com/css?family=Merriweather:400,700");
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+ 
+/* this is the search input  */
 
 
 
@@ -120,6 +121,7 @@ button {
 
 .img-width{
      width: 80vw;
+     padding-top: 2rem;
 }
 
 
@@ -127,21 +129,232 @@ button {
     padding-top: 10%;
 }
 .artist-name{
-    color:blue;
+    color:black;
     font-size: large;
     font-weight: 400;
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    
+    font-family: "Montserrat", sans-serif;
 }
-
 
   
   
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 8.5vw;
+    text-transform: uppercase;
+  }
+  
+  /* this is the title */
 
-@media screen and (min-width: 768px) {
-    .col-md-3 {
-        flex: 0 0 25%;
-        max-width: 25%;
-    }
+html, body{
+  height: 100%;
+  font-weight: 800;
 }
 
+body{
+  
+  font-family: Arial;
+}
+
+svg {
+    display: block;
+    font: 10.5em 'Montserrat';
+    width: 960px;
+    height: 300px;
+    margin: 0 auto;
+}
+.card-body{
+       
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+}
+    
+
+
+.text-copy {
+    fill: none;
+    stroke: blue;
+    stroke-dasharray: 10% 30%;
+    stroke-width: 6px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 6.0s infinite linear;
+}
+
+.text-copy:nth-child(1){
+	stroke:  #DF8453;
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: #DBAD4A;;
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #3D8DAE;
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke:  #DF8453;
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #ACCFCB;
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}
+  
+.searchBox {
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(-50%,50%);
+    background: #DBAD4A;
+    /* height: 40px; */
+    border-radius: 10px;
+    padding: 10px;
+    /* position: relative; */
+}
+
+.searchBox:hover > .searchInput {
+    width: 240px;
+    padding: 0 6px;
+    background-color: #DBAD4A;
+}
+
+.searchBox:hover > .searchButton {
+  background: #ACCFCB;
+  color : black;
+}
+
+.searchButton {
+    color:white;
+    float: right;
+    width: 10vw;
+    height: 40px;
+    border-radius: 10px;
+    background:  #DF8453;
+    text-shadow: #3D8DAE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 2.0s;
+}
+
+.searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 2.0s;
+    line-height: 40px;
+    width: 0px;
+
+}
+
+@keyframes bounce {
+    0% {
+transform: scale(1,1) translate(0px, 0px);
+}
+
+30%{
+transform: scale(1,0.8) translate(0px, 10px); 
+}
+
+75%{
+transform: scale(1,1.1) translate(0px, -25px); 
+}
+
+100% {
+transform: scale(1,1) translate(0px, 0px);
+}
+}
+
+.bounce {
+    text-align: center;
+    margin: 0 auto;
+    color:white !important;
+    /* margin-top: 100px; */
+    /* height: 20px; */
+    width: 150px;
+    padding: 20px;
+    background: #7f3d31;
+    -webkit-animation: bounce 2.0s infinite;
+    border-radius: 5px;
+    position: relative;
+    bottom: 10rem;
+}
+
+
+
+.button-15 {
+  background-image:  linear-gradient(#25323b, #397869);
+  border: 1px solid #0077CC;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  direction: ltr;
+  display: block;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 400;
+  letter-spacing: -.022em;
+  line-height: 1.47059;
+  min-width: 30px;
+  overflow: visible;
+  padding: 4px 15px;
+  text-align: center;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.button-15:disabled {
+  cursor: default;
+  opacity: .3;
+}
+
+.button-15:hover {
+  background-image: linear-gradient(#51A9EE, #147BCD);
+  border-color: #1482D0;
+  text-decoration: none;
+}
+
+.button-15:active {
+  background-image: linear-gradient(#3D94D9, #0067B9);
+  border-color: #006DBC;
+  outline: none;
+}
+
+.button-15:focus {
+  box-shadow: rgba(131, 192, 253, 0.5) 0 0 0 3px;
+  outline: none;
+}
+
+@media screen and (max-width: 620px) {
+.searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+}
+}
+
+.hide {
+    display: none;
+}
+
+
+
+/* CSS */
