@@ -2,6 +2,8 @@
 var displayInfo = document.getElementById("display-info");
 var searchArtist = document.querySelector("#search-input").value;
 var myHeaders = new Headers();
+
+
 myHeaders.append("X-Api-Key", "YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM");
 
 var requestOptions = {
@@ -13,7 +15,7 @@ var requestOptions = {
 var displayEl = document.getElementById("display-content");
 var getGenius = function (artistInput) {
   var randNum = Math.floor(Math.random() * 10);
-  var searchArtist = document.querySelector("#search-input").value;
+  searchArtist = document.querySelector("#search-input").value;
   var Url = `https://api.genius.com/search?q=${searchArtist}&access_token=brqqAVknBmcQm4VTlCwJYeg72QX_Lbtk7LvoK2OKmd_3Y8PWLN17gkME0t49sTzy`;
 
   fetch(Url).then(function (response) {
@@ -40,11 +42,9 @@ var getGenius = function (artistInput) {
 
         templateCurrent += `
         <div class="display-contents">
-        
-        
-
-        <img  class="img-width" src="${image}"/>
         <p class="artist-name">  <span>${artistName}</span><p> 
+        <img  class="img-width" src="${image}"/>
+        
         </div>
         `;
         displayEl.innerHTML = templateCurrent;
@@ -78,7 +78,19 @@ var getGenius = function (artistInput) {
       document.querySelector("#message-container").textContent =
         "Error:" + response.statusText;
     }
-    var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
+
+    document.querySelector(".fun-fact-btn").classList.remove("hide");
+   
+  });
+};
+
+// button 
+var funFactsBtn = document.querySelector(".fun-fact-btn")
+funFactsBtn.addEventListener("click",function(){
+ //if (funFactsBtn === "click"){
+  //container.setAttribute()
+
+ var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
     fetch(factsUrl, requestOptions).then(function (response) {
       console.log(factsUrl, "facts");
 
@@ -94,21 +106,26 @@ var getGenius = function (artistInput) {
 
           let template = "";
           template += `
-        
+       
+       
           <p class="artist-birthday">  <span>BIRTHDAY: ${birthdays}</span><p> 
           <p class="artist-net-worth">  <span>  NET WORTH: ${netWorth}</span><p> 
           <p class="artist-nationality">  <span> NATIONALITY: ${nationalitys}</span><p> 
-         
+         </div>
           `;
           displayInfo.innerHTML = template;
         });
+        
+        document.querySelector(".fun-fact-btn").classList.add("hide");
       } else {
         document.querySelector("#message-container").textContent =
-        "Error:" + response.statusText;
+          "Error:" + response.statusText;
       }
     });
-  });
-};
+});
+
+
+
 
 var searchArtistEl = document.querySelector("#search-input");
 
@@ -120,11 +137,12 @@ var formSubmitHandler = function (event) {
     getGenius(artist);
     searchArtistEl.value = "";
   } else {
-    document.querySelector("#message-container").textContent =
-      "Enter something please";
+    // document.querySelector("#message-container").textContent =
+    //   "Enter something please";
   }
 };
 
 document
   .querySelector("#search-form")
   .addEventListener("submit", formSubmitHandler);
+  
