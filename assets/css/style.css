@@ -134,8 +134,22 @@ button {
     padding-bottom: 2rem;
 }
 
-
-  
+#display-info {
+    border: solid 2px blue;
+    color: antiquewhite;
+    text-decoration: solid;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+ 
+p {
+    margin: 1%;
+    font-style: italic;
+    /* border: solid 2px black;
+    max-width: 300px; */
+}
   
 
 @media screen and (min-width: 768px) {
