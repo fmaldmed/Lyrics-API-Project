@@ -11,6 +11,7 @@
 
 body {
     background-color: rgb(108, 154, 214);
+    font-family: Arial;
 }
 
 html,
@@ -121,7 +122,7 @@ button {
 
 .img-width{
      width: 80vw;
-     padding-top: 2rem;
+   
 }
 
 
@@ -153,10 +154,7 @@ html, body{
   font-weight: 800;
 }
 
-body{
-  
-  font-family: Arial;
-}
+
 
 svg {
     display: block;
@@ -228,12 +226,16 @@ svg {
     width: 240px;
     padding: 0 6px;
     background-color: #DBAD4A;
+   
 }
+
 
 .searchBox:hover > .searchButton {
   background: #ACCFCB;
   color : black;
+  font-weight: 700;
 }
+
 
 .searchButton {
     color:white;
@@ -262,6 +264,15 @@ svg {
     width: 0px;
 
 }
+/* .searchBox:hover > .searchButton {
+    width: 15vw;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.fun-fact-btn{
+    width: 100vw;
+} */
 
 @keyframes bounce {
     0% {
@@ -285,8 +296,8 @@ transform: scale(1,1) translate(0px, 0px);
     text-align: center;
     margin: 0 auto;
     color:white !important;
-    /* margin-top: 100px; */
-    /* height: 20px; */
+    margin-top: 100px; 
+    height: 100px; 
     width: 150px;
     padding: 20px;
     background: #7f3d31;
@@ -344,13 +355,73 @@ transform: scale(1,1) translate(0px, 0px);
   outline: none;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 768px) {
 .searchBox:hover > .searchInput {
     width: 150px;
     padding: 0 6px;
 }
+svg {
+    display: block;
+    font: 10.5em 'Montserrat';
+    
+    margin: 0 auto;
+    width: 100%;
+   
+}
+/* .searchBox {
+    position: absolute;
+   
+    left: 50%;
+    transform: translate(-50%,50%);
+    background: #DBAD4A;
+   
+    border-radius: 10px;
+    
+    bottom: 40%;
+} */
+.searchBox::after{
+    bottom: 20%;
+}
+.main-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+.searchBox:hover > .searchButton {
+    width: 15vw;
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
+.fun-fact-btn {
+    width: 80vw;
+    margin-top: 8rem;
+    height: 10vh;
+}
+}
+@media screen and (max-width: 576px) {
+    /* .searchBox {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,50%);
+        background: #DBAD4A;
+        border-radius: 10px;
+       
+       
+    } */
+    .fun-fact-btn {
+        width: 80vw;
+        margin-top: 8rem;
+       
+       
+}
+.card-body {
+    display: flex;
+    justify-content: center;
+    padding-top: 10rem;
+}
+}
+/* 992px, 768px, 576px */
 .hide {
     display: none;
 }
