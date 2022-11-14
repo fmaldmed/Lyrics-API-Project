@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
- 
+@import url('https://fonts.googleapis.com/css?family=Cairo');
 /* this is the search input  */
 
 
@@ -46,6 +46,54 @@ h1 {
 .Lyrics {
     color: aqua;
 }
+
+/* this si the gun fact styles */
+.title {
+    font-family: "Cairo";
+    text-align: center;
+    color: #FFF;
+    line-height: 2;
+    text-transform: uppercase;
+    }
+
+
+.title  {
+	background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+	background-size: cover;
+	color: transparent;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	text-transform: uppercase;
+	font-size: 2rem;
+	margin: 10px 0;
+}
+h1 {
+	background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+	background-size: cover;
+	color: transparent;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	text-transform: uppercase;
+	font-size: 2rem;
+	margin: 10px 0;
+}
+/* styling my button */
+
+.white-mode {
+	text-decoration: none;
+	padding: 7px 10px;
+	background-color: #122;
+	border-radius: 3px;
+	color: #FFF;
+	transition: .35s ease-in-out;
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+	font-family: "Montserrat";
+}
+
+
+
 
 button,
 input,
@@ -129,25 +177,10 @@ button {
 .text-light {
     padding-top: 10%;
 }
-.artist-name{
-    color:black;
-    font-size: large;
-    font-weight: 400;
-    padding-top: 2rem;
-    
-    font-family: "Montserrat", sans-serif;
-}
 
   
   
-  .title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    font-size: 8.5vw;
-    text-transform: uppercase;
-  }
-  
-  /* this is the title */
+ 
 
 html, body{
   height: 100%;
@@ -215,7 +248,9 @@ svg {
     /* top: 50%; */
     left: 50%;
     transform: translate(-50%,50%);
-    background: #DBAD4A;
+    /* background: #DBAD4A; */
+    background-image: url(https://media4.giphy.com/media/FpUcEs9flCUW3e2q5I/giphy.webp?cid=ecf05e47ck6lbqxqp0pg2219w5wmj77c3vpjxqd8chfb2dgs&rid=giphy.webp&ct=g);
+    background-size: 2rem;
     /* height: 40px; */
     border-radius: 10px;
     padding: 10px;
@@ -264,15 +299,7 @@ svg {
     width: 0px;
 
 }
-/* .searchBox:hover > .searchButton {
-    width: 15vw;
-    font-size: 0.8rem;
-    font-weight: 700;
-}
 
-.fun-fact-btn{
-    width: 100vw;
-} */
 
 @keyframes bounce {
     0% {
@@ -300,7 +327,10 @@ transform: scale(1,1) translate(0px, 0px);
     height: 100px; 
     width: 150px;
     padding: 20px;
-    background: #7f3d31;
+    /* background: linear-gradient(300deg,rgb(11, 99, 54),rgb(125, 80, 24),rgb(203, 192, 43)); */
+    background-image: url(https://media2.giphy.com/media/EIbqAlY9yJlJ3WBHjc/200w.webp?cid=ecf05e47ck6lbqxqp0pg2219w5wmj77c3vpjxqd8chfb2dgs&rid=200w.webp&ct=g);
+    /* background-size: cover; */
+    background-size: 40rem;
     -webkit-animation: bounce 2.0s infinite;
     border-radius: 5px;
     position: relative;
@@ -332,6 +362,8 @@ transform: scale(1,1) translate(0px, 0px);
   touch-action: manipulation;
   white-space: nowrap;
 }
+
+
 
 .button-15:disabled {
   cursor: default;
@@ -368,17 +400,11 @@ svg {
     width: 100%;
    
 }
-/* .searchBox {
-    position: absolute;
-   
-    left: 50%;
-    transform: translate(-50%,50%);
-    background: #DBAD4A;
-   
-    border-radius: 10px;
-    
-    bottom: 40%;
-} */
+.title{
+    font-size: 1.5rem;
+}
+
+
 .searchBox::after{
     bottom: 20%;
 }
@@ -394,26 +420,29 @@ svg {
 }
 
 .fun-fact-btn {
-    width: 80vw;
     margin-top: 8rem;
-    height: 10vh;
+   
+    /* width: 80vw;
+    height: 2vh;
+    padding-bottom: 1.7rem; */
 }
 }
 @media screen and (max-width: 576px) {
-    /* .searchBox {
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%,50%);
-        background: #DBAD4A;
-        border-radius: 10px;
-       
-       
-    } */
+    
     .fun-fact-btn {
-        width: 80vw;
+        font-weight: 700;
         margin-top: 8rem;
+        width: 80vw;
+        height: 2vh;
+        /* padding-bottom: 3rem; */
+        font-size: 0.7rem;
+        padding-bottom: 2rem;
+    }
        
        
+
+.title{
+    font-size: 1rem;
 }
 .card-body {
     display: flex;
