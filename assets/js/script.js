@@ -26,7 +26,7 @@ var getGenius = function (artistInput) {
         );
 
         
-
+        var displayInfo = document.getElementById("display-info");
         var artistName = hits[randNum].result.artist_names;
 
         console.log(artistName, "name");
@@ -40,7 +40,7 @@ var getGenius = function (artistInput) {
 
         templateCurrent += `
         <div class="display-contents">
-        <p class="artist-name">  <span>${artistName}</span><p> 
+        <p class="artist-name title">  <span>${artistName}</span><p> 
         <img  class="img-width" src="${image}"/>
         
         </div>
@@ -101,10 +101,11 @@ var funFactsBtn = document.querySelector(".fun-fact-btn");
         let template = "";
         template += `
        
-       
-          <p class="artist-birthday">  <span>BIRTHDAY: ${birthdays}</span><p> 
-          <p class="artist-net-worth">  <span>  NET WORTH: ${netWorth}</span><p> 
-          <p class="artist-nationality">  <span> NATIONALITY: ${nationalitys}</span><p> 
+       <div class="fun-facts-div title">
+       <h1>Fun Facts </h1>
+          <p class="artist-birthday title">  <span>BIRTHDAY: ${birthdays}</span><p> 
+          <p class="artist-net-worth title">  <span>  NET WORTH: $ ${netWorth}</span><p> 
+          <p class="artist-nationality title">  <span> NATIONALITY: ${nationalitys}</span><p> 
          </div>`;
         displayInfo.innerHTML = template;
       });
