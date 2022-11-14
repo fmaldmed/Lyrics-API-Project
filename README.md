@@ -34,7 +34,7 @@ To set up the development environment and we as a group had to put someone in ch
  
  
  GIVEN I want to search for some music from my favorite artists, search for the lyrics to their songs, and see more of their greatest hits.
-Here is a video to show the functionality of the website :
+Here is a video to show the functionality of the website : <iframe src="https://drive.google.com/file/d/1q80z05K_fH6ou20JQh4I6dt5ikNw0UZE/preview" width="640" height="480"></iframe>
 
 
 
