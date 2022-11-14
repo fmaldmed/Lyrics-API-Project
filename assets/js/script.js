@@ -1,11 +1,9 @@
-// YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM
 var displayInfo = document.getElementById("display-info");
 var searchArtist = document.querySelector("#search-input").value;
 var myHeaders = new Headers();
 
-
 myHeaders.append("X-Api-Key", "YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM");
-
+// this is the api request for the genius music
 var requestOptions = {
   method: "GET",
   headers: myHeaders,
@@ -27,7 +25,7 @@ var getGenius = function (artistInput) {
             .includes(artistInput.toLowerCase())
         );
 
-        console.log(data);
+        
 
         var artistName = hits[randNum].result.artist_names;
 
@@ -79,54 +77,46 @@ var getGenius = function (artistInput) {
         "Error:" + response.statusText;
     }
 
-    document.querySelector(".fun-fact-btn").classList.remove("hide");
-   
+   document.querySelector(".fun-fact-btn").classList.remove("hide");
   });
 };
 
-// button 
-var funFactsBtn = document.querySelector(".fun-fact-btn")
-funFactsBtn.addEventListener("click",function(){
- //if (funFactsBtn === "click"){
-  //container.setAttribute()
+// button function for the fun facts and the api call for the fun facts
+var funFactsBtn = document.querySelector(".fun-fact-btn");
+ funFactsBtn.addEventListener("click", function () {
+  var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
+  fetch(factsUrl, requestOptions).then(function (response) {
+    console.log(factsUrl, "facts");
 
- var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
-    fetch(factsUrl, requestOptions).then(function (response) {
-      console.log(factsUrl, "facts");
+    if (response.ok) {
+      response.json().then(function (data) {
+        var birthdays = data[0].birthday;
+        console.log(birthdays)
 
-      if (response.ok) {
-        response.json().then(function (data) {
-          console.log(data[0].birthday, "bday");
-          var birthdays = data[0].birthday;
-          console.log(data[0].net_worth, "$$");
-          var netWorth = data[0].net_worth;
-          console.log(data[0].nationality, "were from");
-          var nationalitys = data[0].nationality;
-          console.log(data, "data");
+        var netWorth = data[0].net_worth;
+        console.log(netWorth)
 
-          let template = "";
-          template += `
+        var nationalitys = data[0].nationality;
+        console.log(nationalitys)
+        let template = "";
+        template += `
        
        
           <p class="artist-birthday">  <span>BIRTHDAY: ${birthdays}</span><p> 
           <p class="artist-net-worth">  <span>  NET WORTH: ${netWorth}</span><p> 
           <p class="artist-nationality">  <span> NATIONALITY: ${nationalitys}</span><p> 
-         </div>
-          `;
-          displayInfo.innerHTML = template;
-        });
-        
-        document.querySelector(".fun-fact-btn").classList.add("hide");
-      } else {
-        document.querySelector("#message-container").textContent =
-          "Error:" + response.statusText;
-      }
-    });
+         </div>`;
+        displayInfo.innerHTML = template;
+      });
+
+     document.querySelector(".fun-fact-btn").classList.add("hide");
+    } else {
+      document.querySelector("#message-container").textContent =
+        "Error:" + response.statusText;
+    }
+  });
 });
-
-
-
-
+// this is the form submit function 
 var searchArtistEl = document.querySelector("#search-input");
 
 var formSubmitHandler = function (event) {
@@ -137,12 +127,9 @@ var formSubmitHandler = function (event) {
     getGenius(artist);
     searchArtistEl.value = "";
   } else {
-    // document.querySelector("#message-container").textContent =
-    //   "Enter something please";
   }
 };
 
 document
   .querySelector("#search-form")
   .addEventListener("submit", formSubmitHandler);
-  
