@@ -2,7 +2,7 @@
 
 ## Description
 
-Fat Music is a website for anyone who wants to listen to their favorite music and see the lyrics, play a sample of the song and look at their favorite artist's music hits and albums. You can also see some fun facts about your favorite artist as well. Check out the live site here:.............
+Fat Music is a website for anyone who wants to listen to their favorite music and see the lyrics, play a sample of the song and look at their favorite artist's music hits and albums. You can also see some fun facts about your favorite artist as well. Check out the live site here: https://fmaldmed.github.io/Lyrics-API-Project/
 When you visit the page, the user can add in the input of their favorite artist, and the artist of choice is pulled for the API genius. Then, the user can choose to see the lyrics of a song from that artist or see more songs from that artist. They can also see fun facts about the artist of choice; that information was pulled from the ninja API.
 This website is excellent for people who just want to look for the albums and songs of their favorite artists and see everything in one place. Also, it's fun to look up different artists and see the lyrics of the songs .
 We used the genius API for the song lyrics images and hit songs and the ninja API for the fun facts. We used javascript to make this website. 
@@ -46,7 +46,8 @@ WHEN I open the page
 THEN the page is displayed .
 
 
-<img width="692" alt="image" src="https://user-images.githubusercontent.com/87034052/201729265-4a3a442d-9d3e-4bff-b73c-3172faaae2d7.png">
+
+<img width="649" alt="image" src="https://user-images.githubusercontent.com/87034052/201765605-408daadb-f60d-40ad-84ac-c218384a2c43.png">
 
 
 
@@ -80,8 +81,8 @@ THEN When I click the start searching button, an image of the artist will appear
  
  <img width="431" alt="image" src="https://user-images.githubusercontent.com/87034052/201729788-57443751-002c-4ec4-9dde-6b3ef79e3210.png">
  
- <img width="421" alt="image" src="https://user-images.githubusercontent.com/87034052/201730066-b6358569-9072-4e1f-a81d-bcd7f6f04ce4.png">
- 
+ <img width="548" alt="image" src="https://user-images.githubusercontent.com/87034052/201766135-b807fb25-5407-4505-b9b1-0bbf4bf023f9.png">
+
  
  
  
@@ -90,14 +91,11 @@ THEN When I click the start searching button, an image of the artist will appear
  ALSO a little box with “ wanna see some fun facts click here” displays the artist of choice nationality, birthday, and net worth. 
  
  
- <img width="442" alt="image" src="https://user-images.githubusercontent.com/87034052/201730257-3a4df090-695e-4b54-bc51-0e6f00433bef.png">
+ <img width="190" alt="image" src="https://user-images.githubusercontent.com/87034052/201766237-2c29a70d-227c-4927-a177-e530de675392.png">
  
 
+<img width="437" alt="image" src="https://user-images.githubusercontent.com/87034052/201766298-c3325d0d-c910-40d0-b472-87e159370291.png">
 
- <img width="442" alt="image" src="https://user-images.githubusercontent.com/87034052/201730257-3a4df090-695e-4b54-bc51-0e6f00433bef.png">
-
-
- 
  
  
 
@@ -133,6 +131,8 @@ THEN if you want to search for more of that artist's songs, you can input the ar
 
 <img width="150" alt="image" src="https://user-images.githubusercontent.com/87034052/201730481-5bc87f97-3c39-480b-b448-ca09c3aadd67.png">
 
+
+
 <img width="964" alt="image" src="https://user-images.githubusercontent.com/87034052/201731387-e776edfb-1e5c-4b80-b3dc-e37aff6b8987.png">
 
 
@@ -149,11 +149,14 @@ THEN if you want to search for more of that artist's songs, you can input the ar
 
  # Support
 
-You can email me for extra support at 
+You can email me for extra support at  anabennett77@gamil.com , fmaldmed@gmail.com , tfaus@gmail.com
 
 
 
-## License
+
+
+## License 
+see repo at https://github.com/fmaldmed/Lyrics-API-Project
 
 
 
