@@ -76,14 +76,25 @@ THEN I input the name of my choice, then click the start searching button .
 
 
 THEN When I click the start searching button, an image of the artist will appear, The image presented will be an album cover, and the lyrics that will later be displayed will be one of the songs in that specific album's image.
- ALSO a little box with “ wanna see some fun facts click here” displays the artist of choice nationality, birthday, and net worth. 
+ 
  
  <img width="431" alt="image" src="https://user-images.githubusercontent.com/87034052/201729788-57443751-002c-4ec4-9dde-6b3ef79e3210.png">
  
  <img width="421" alt="image" src="https://user-images.githubusercontent.com/87034052/201730066-b6358569-9072-4e1f-a81d-bcd7f6f04ce4.png">
  
+ 
+ 
+ 
+ 
+ 
+ ALSO a little box with “ wanna see some fun facts click here” displays the artist of choice nationality, birthday, and net worth. 
+ 
+ 
  <img width="442" alt="image" src="https://user-images.githubusercontent.com/87034052/201730257-3a4df090-695e-4b54-bc51-0e6f00433bef.png">
+ 
 
+
+ <img width="442" alt="image" src="https://user-images.githubusercontent.com/87034052/201730257-3a4df090-695e-4b54-bc51-0e6f00433bef.png">
 
 
  
