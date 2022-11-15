@@ -3,7 +3,7 @@ var searchArtist = document.querySelector("#search-input").value;
 var myHeaders = new Headers();
 
 myHeaders.append("X-Api-Key", "YIGqyZy06qmqer7zDr+bcA==vIorM8DFukk00uyM");
-// this is the api request for the genius music
+// Beginning of request to Genius API
 var requestOptions = {
   method: "GET",
   headers: myHeaders,
@@ -15,7 +15,7 @@ var getGenius = function (artistInput) {
   var randNum = Math.floor(Math.random() * 10);
   searchArtist = document.querySelector("#search-input").value;
   var Url = `https://api.genius.com/search?q=${searchArtist}&access_token=brqqAVknBmcQm4VTlCwJYeg72QX_Lbtk7LvoK2OKmd_3Y8PWLN17gkME0t49sTzy`;
-
+//Fetch function used to request data from target URL
   fetch(Url).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
@@ -36,6 +36,7 @@ var getGenius = function (artistInput) {
 
         var hitSongs = hits[randNum].result.primary_artist.url;
 
+        //Template Literal used to display Artist Name and Album Cover image.
         let templateCurrent = "";
 
         templateCurrent += `
@@ -51,13 +52,13 @@ var getGenius = function (artistInput) {
 
         var repoContainerEl = document.querySelector("#repos-container");
         var allBtn = Array.from(languageButtonsEl.children);
-
+        //Function designed for all buttons by adding an event listener under "click". Allows to distribute function to every button.
         allBtn.forEach(function (btn) {
           btn.addEventListener("click", buttonClickHandler);
         });
         function buttonClickHandler(event) {
           var language = event.target.getAttribute("data-language");
-
+          //If statement for "Hit Songs" and "Lyrics"buttons. Linked to Genius API results.
           if (language === "hitSongs") {
             console.log("hitSongs");
             document.location = hitSongs;
@@ -76,18 +77,18 @@ var getGenius = function (artistInput) {
       document.querySelector("#message-container").textContent =
         "Error:" + response.statusText;
     }
-
+    //Following code is used to hide/unhide the Fun Facts Button.
    document.querySelector(".fun-fact-btn").classList.remove("hide");
   });
 };
 
-// button function for the fun facts and the api call for the fun facts
+// API-Ninjas button function. Used to request data and display "Fun Facts" about target Artist.
 var funFactsBtn = document.querySelector(".fun-fact-btn");
  funFactsBtn.addEventListener("click", function () {
   var factsUrl = `https://api.api-ninjas.com/v1/celebrity?name=${searchArtist}`;
   fetch(factsUrl, requestOptions).then(function (response) {
     console.log(factsUrl, "facts");
-
+    //If statement to pull Artist info from API response.
     if (response.ok) {
       response.json().then(function (data) {
         var birthdays = data[0].birthday;
@@ -98,6 +99,7 @@ var funFactsBtn = document.querySelector(".fun-fact-btn");
 
         var nationalitys = data[0].nationality;
         console.log(nationalitys)
+        //Template Literal used to display Fun Facts API response.
         let template = "";
         template += `
        
@@ -107,6 +109,7 @@ var funFactsBtn = document.querySelector(".fun-fact-btn");
           <p class="artist-net-worth title">  <span>  NET WORTH: $ ${netWorth}</span><p> 
           <p class="artist-nationality title">  <span> NATIONALITY: ${nationalitys}</span><p> 
          </div>`;
+         //Below is the code used to display template literal information.
         displayInfo.innerHTML = template;
       });
 
@@ -117,13 +120,13 @@ var funFactsBtn = document.querySelector(".fun-fact-btn");
     }
   });
 });
-// this is the form submit function 
+// Form submit function
 var searchArtistEl = document.querySelector("#search-input");
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
   var artist = searchArtistEl.value.trim();
-
+// Statement used to reset value of Artist name.
   if (artist) {
     getGenius(artist);
     searchArtistEl.value = "";
